@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "60327020407",
+    "project_id": "microblog-bot",
+    "storage_bucket": "microblog-bot.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:60327020407:android:cdb171ca4874156d548372",
+        "android_client_info": {
+          "package_name": "com.holondevs.micro_blog_bot"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "60327020407-9acornsidibuejhrhsgap8kld43hrdj8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJgMuWWl7R_6qde7lfURB7W6nXbYwl6VI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "60327020407-9acornsidibuejhrhsgap8kld43hrdj8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
