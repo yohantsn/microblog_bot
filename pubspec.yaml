@@ -30,7 +30,7 @@ dependencies:
   cupertino_icons: ^1.0.1
 
   #modular
-  flutter_modular: ^2.0.1
+  flutter_modular: ^3.0.0-nullsafety.36
 
   #mobx
   flutter_mobx: ^1.1.0+2
@@ -39,6 +39,9 @@ dependencies:
   firebase_core: ^0.7.0
   firebase_auth: ^0.20.0+1
   cloud_firestore: ^0.16.0
+
+  #widgets
+  gradient_bottom_navigation_bar: ^1.0.0+4
 
 dev_dependencies:
   flutter_test:
