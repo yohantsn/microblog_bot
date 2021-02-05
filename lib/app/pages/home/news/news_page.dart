@@ -12,6 +12,7 @@ class _NewsPageState extends ModularState<NewsPage, NewsController> {
   @override
   Widget build(BuildContext context) {
     return DefaultScreen(
+      showAppBar: true,
       title: "News",
       body: Container(),
     );

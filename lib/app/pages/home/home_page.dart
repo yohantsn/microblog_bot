@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:micro_blog_bot/app/pages/home/home_module.dart';
 import 'package:micro_blog_bot/app/widgets/bottom_navigation/bottom_navigation.dart';
 
 import 'home_controller.dart';

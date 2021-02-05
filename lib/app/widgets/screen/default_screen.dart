@@ -7,29 +7,31 @@ class DefaultScreen extends StatelessWidget {
   final FloatingActionButton floatingActionButton;
   final FloatingActionButtonLocation floatingActionButtonLocation;
   final Widget body;
+  final bool showAppBar;
 
   DefaultScreen(
       {this.title,
       this.bottomNavigationBar,
       this.floatingActionButton,
       this.floatingActionButtonLocation,
-      this.body});
+      this.body,
+      @required this.showAppBar});
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-        child: Scaffold(
-      bottomNavigationBar: bottomNavigationBar,
-      floatingActionButton: floatingActionButton,
-      floatingActionButtonLocation: floatingActionButtonLocation,
-      body: Column(
-        children: [
-          GradientBar(
-            title: title,
-          ),
-          body
-        ],
-      ),
-    ));
+    return Scaffold(
+        bottomNavigationBar: bottomNavigationBar,
+        floatingActionButton: floatingActionButton,
+        floatingActionButtonLocation: floatingActionButtonLocation,
+        body:  Column(
+          children: [
+            showAppBar ? GradientBar(
+              title: title,
+            ): Container(),
+            body
+          ],
+        ),
+
+    );
   }
 }

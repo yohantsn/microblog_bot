@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gradient_bottom_navigation_bar/gradient_bottom_navigation_bar.dart';
+import 'package:micro_blog_bot/app/style/app_color_scheme.dart';
 
 Widget bottomBarWidget({int selectedIndex, Function onItemTapped}) {
   return Container(
@@ -33,8 +34,8 @@ Widget bottomBarWidget({int selectedIndex, Function onItemTapped}) {
           title: Text('Perfil', style: TextStyle(color: Colors.white),),
         ),
       ],
-      backgroundColorStart: Color(0xFFD6DF22),
-      backgroundColorEnd: Color(0xFF3B9CD6),
+      backgroundColorStart: AppColorScheme.ColorPrincipal,
+      backgroundColorEnd: AppColorScheme.ColorOrange,
       onTap: onItemTapped,
       currentIndex: selectedIndex,
     ),

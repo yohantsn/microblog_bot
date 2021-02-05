@@ -9,19 +9,20 @@ class AuthFirebase implements IAuth{
 
   @override
   Future<Map> authCreateAccountEmail({String email, String password}) async{
-    Map<String, dynamic> _map = <String,dynamic>{};
+    final _map = <String,dynamic>{};
     try{
       UserCredential userCredential = await this
           .auth
           .createUserWithEmailAndPassword(email: email, password: password);
       _map["isSucess"] = true;
       _map["uid"] = userCredential.user.uid;
+      return _map;
     }on FirebaseException catch (e) {
       if (e.code == 'weak-password') {
-        _map["errorMSg"] =
+        _map["errorPassMsg"] =
             "A senha é muito fraca, tente informar letras e números.";
       } else if (e.code == 'email-already-in-use') {
-        _map["errorMSg"] =
+        _map["errorMsg"] =
           "Email ja cadastrado.";
       } else {
         _map["errorMSg"] =
@@ -29,7 +30,7 @@ class AuthFirebase implements IAuth{
       }
       return _map;
     } catch (e) {
-      _map["errorMSg"] =
+      _map["errorMsg"] =
       "Servidor feio!!! Desculpe tivemos um erro inesperado, por favor, tente novamente.";
       return _map;
     }
@@ -37,7 +38,7 @@ class AuthFirebase implements IAuth{
 
   @override
   Future<Map> authSignAccountEmail({String email, String password}) async {
-    Map<String, dynamic> _map = <String,dynamic>{};
+    final _map = <String,dynamic>{};
     try {
       UserCredential userCredential = await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email, password: password);
@@ -45,13 +46,13 @@ class AuthFirebase implements IAuth{
       _map["uid"] = userCredential.user.uid;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-        _map["errorMSg"] =
+        _map["errorMsg"] =
         "Usuario não encontrado.";
       } else if (e.code == 'wrong-password') {
-        _map["errorMSg"] =
+        _map["errorMsg"] =
         "Usuário ou senhas incorretos.";
       } else {
-        _map["errorMSg"] =
+        _map["errorMsg"] =
         "Usuário ou senhas incorretos.";
       }
     }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:micro_blog_bot/app/style/app_color_scheme.dart';
 
 class GradientBar extends StatelessWidget {
   final String title;
@@ -23,10 +24,9 @@ class GradientBar extends StatelessWidget {
             bottomLeft: Radius.circular(20),
             bottomRight: Radius.circular(20)),
       gradient: LinearGradient(
-          colors: [Color(0xFFD6DF22),  Color(0xFF3B9CD6)],
+          colors: [AppColorScheme.ColorPrincipal,  AppColorScheme.ColorOrange],
           begin: const FractionalOffset(0.2, 0.0),
           end: const FractionalOffset(1.0, 0.0),
-          // stops: [0.0, 1.0],
           tileMode: TileMode.clamp
       ),
     ),

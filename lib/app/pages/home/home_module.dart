@@ -15,7 +15,7 @@ class HomeModule extends ChildModule {
   @override
   List<Bind> get binds => [
     Bind.singleton((i) => baseContent),
-    Bind((i) => HomeController()),
+    Bind((i) => HomeController(i.args.data)),
     Bind((i) => NewsController()),
     Bind((i) => FeedController(),),
     Bind((i) => ProfileController(),),

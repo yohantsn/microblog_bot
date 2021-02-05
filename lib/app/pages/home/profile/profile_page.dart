@@ -12,6 +12,7 @@ class _ProfilePageState extends ModularState<ProfilePage, ProfileController> {
   @override
   Widget build(BuildContext context) {
     return DefaultScreen(
+      showAppBar: true,
       title: "Perfil",
       body: Container(),
     );
