@@ -80,7 +80,7 @@ class _NewPostPageState extends ModularState<NewPostPage, NewPostController> {
               padding: EdgeInsets.all(20),
               child: Observer(
                 builder: (_) => ButtonPrincipal(
-                    text: "Entrar",
+                    text: "Enviar",
                     onPressed: store.isValid ? store.savePost : null),
               ),
             ),
