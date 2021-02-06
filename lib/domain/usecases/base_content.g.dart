@@ -24,6 +24,21 @@ mixin _$BaseContent on _BaseContent, Store {
     });
   }
 
+  final _$postSnapshotAtom = Atom(name: '_BaseContent.postSnapshot');
+
+  @override
+  DocumentSnapshot get postSnapshot {
+    _$postSnapshotAtom.reportRead();
+    return super.postSnapshot;
+  }
+
+  @override
+  set postSnapshot(DocumentSnapshot value) {
+    _$postSnapshotAtom.reportWrite(value, super.postSnapshot, () {
+      super.postSnapshot = value;
+    });
+  }
+
   final _$_BaseContentActionController = ActionController(name: '_BaseContent');
 
   @override
@@ -38,9 +53,21 @@ mixin _$BaseContent on _BaseContent, Store {
   }
 
   @override
+  void setPostSnapshot(DocumentSnapshot postSnapshot) {
+    final _$actionInfo = _$_BaseContentActionController.startAction(
+        name: '_BaseContent.setPostSnapshot');
+    try {
+      return super.setPostSnapshot(postSnapshot);
+    } finally {
+      _$_BaseContentActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
-userModel: ${userModel}
+userModel: ${userModel},
+postSnapshot: ${postSnapshot}
     ''';
   }
 }

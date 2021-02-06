@@ -2,6 +2,8 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:micro_blog_bot/app/pages/home/feed/feed_controller.dart';
 import 'package:micro_blog_bot/app/pages/home/feed/feed_page.dart';
 import 'package:micro_blog_bot/app/pages/home/home_page.dart';
+import 'package:micro_blog_bot/app/pages/home/new_post/new_post_controller.dart';
+import 'package:micro_blog_bot/app/pages/home/new_post/new_post_page.dart';
 import 'package:micro_blog_bot/app/pages/home/news/news_controller.dart';
 import 'package:micro_blog_bot/app/pages/home/news/news_page.dart';
 import 'package:micro_blog_bot/app/pages/home/profile/profile_controller.dart';
@@ -19,6 +21,7 @@ class HomeModule extends ChildModule {
     Bind((i) => NewsController()),
     Bind((i) => FeedController(),),
     Bind((i) => ProfileController(),),
+    Bind((i) => NewPostController(i.args.data),)
   ];
 
   @override
@@ -32,6 +35,7 @@ class HomeModule extends ChildModule {
         ChildRoute('/profile', child: (_, __) => ProfilePage()),
       ]
     ),
+    ChildRoute('/new_post', child: (_, __) => NewPostPage()),
   ];
 
 }

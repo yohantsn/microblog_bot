@@ -1,14 +1,14 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:micro_blog_bot/data/auth/auth_interface.dart';
-import 'package:micro_blog_bot/data/repositorie/storage_interface.dart';
+import 'package:micro_blog_bot/data/repositorie/external/storage_interface.dart';
 import 'package:mobx/mobx.dart';
 part 'login_controller.g.dart';
 
 class LoginController = _LoginController with _$LoginController;
 
 abstract class _LoginController with Store {
-  IAuth auth = Modular.get();
-  IStorage storage = Modular.get();
+  final IAuth auth = Modular.get();
+  final IStorage storage = Modular.get();
 
   @observable
   String errorPass = "";
@@ -48,11 +48,7 @@ abstract class _LoginController with Store {
     if (value.isEmpty) {
       errorPass = "Senha não pode ser vazia";
     } else {
-      if (value.length < 8) {
-        errorPass = "Senha deve conter no mínimo 8 caracteres";
-      } else {
-        errorPass = "";
-      }
+      errorPass = "";
     }
   }
 

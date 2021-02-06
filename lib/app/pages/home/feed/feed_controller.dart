@@ -1,4 +1,8 @@
+import 'package:flutter_modular/flutter_modular.dart';
+import 'package:micro_blog_bot/data/repositorie/external/storage_interface.dart';
 import 'package:micro_blog_bot/domain/models/post_model.dart';
+import 'package:micro_blog_bot/domain/models/user_model.dart';
+import 'package:micro_blog_bot/domain/usecases/base_content.dart';
 import 'package:mobx/mobx.dart';
 
 part 'feed_controller.g.dart';
@@ -7,63 +11,21 @@ class FeedController = _FeedController
     with _$FeedController;
 
 abstract class _FeedController with Store{
+  final IStorage storage = Modular.get();
+  final BaseContent baseContent = Modular.get();
+
   _FeedController(){
     isLoading = true;
-    Future.delayed(Duration(seconds: 3)).then((value) => isLoading = false);
+    snapshotPosts = storage.readPosts();
   }
+
+  @observable
+  Stream snapshotPosts;
 
   @observable
   bool isLoading = false;
 
-  @observable
-  List<PostModel> posts = [
-    PostModel(txtPost: "arcu odio ut sem nulla pharetra diam sit amet nisl "
-        "suscipit adipiscing bibendum est ultricies integer quis auctor elit "
-        "sed vulputate mi sit amet mauris commodo quis imperdiet massa tincidunt"
-        " nunc pulvinar sapien et ligula ullamcorper malesuada proin libero "
-        "nunc consequat interdum varius sit amet mattis vulputate enim nulla "
-        "aliquet", userNamePost: "Yohan Sampaio", datePost: DateTime.now()),
-    PostModel(txtPost: "arcu odio ut sem nulla pharetra diam sit amet nisl "
-        "suscipit adipiscing bibendum est ultricies integer quis auctor elit "
-        "sed vulputate mi sit amet mauris commodo quis imperdiet massa tincidunt"
-        " nunc pulvinar sapien et ligula ullamcorper malesuada proin libero "
-        "nunc consequat interdum varius sit amet mattis vulputate enim nulla "
-        "aliquet", userNamePost: "Yohan Sampaio", datePost: DateTime.now()),
-    PostModel(txtPost: "arcu odio ut sem nulla pharetra diam sit amet nisl "
-        "suscipit adipiscing bibendum est ultricies integer quis auctor elit "
-        "sed vulputate mi sit amet mauris commodo quis imperdiet massa tincidunt"
-        " nunc pulvinar sapien et ligula ullamcorper malesuada proin libero "
-        "nunc consequat interdum varius sit amet mattis vulputate enim nulla "
-        "aliquet", userNamePost: "Yohan Sampaio", datePost: DateTime.now()),
-    PostModel(txtPost: "arcu odio ut sem nulla pharetra diam sit amet nisl "
-        "suscipit adipiscing bibendum est ultricies integer quis auctor elit "
-        "sed vulputate mi sit amet mauris commodo quis imperdiet massa tincidunt"
-        " nunc pulvinar sapien et ligula ullamcorper malesuada proin libero "
-        "nunc consequat interdum varius sit amet mattis vulputate enim nulla "
-        "aliquet", userNamePost: "Yohan Sampaio", datePost: DateTime.now()),
-    PostModel(txtPost: "arcu odio ut sem nulla pharetra diam sit amet nisl "
-        "suscipit adipiscing bibendum est ultricies integer quis auctor elit "
-        "sed vulputate mi sit amet mauris commodo quis imperdiet massa tincidunt"
-        " nunc pulvinar sapien et ligula ullamcorper malesuada proin libero "
-        "nunc consequat interdum varius sit amet mattis vulputate enim nulla "
-        "aliquet", userNamePost: "Yohan Sampaio", datePost: DateTime.now()),
-    PostModel(txtPost: "arcu odio ut sem nulla pharetra diam sit amet nisl "
-        "suscipit adipiscing bibendum est ultricies integer quis auctor elit "
-        "sed vulputate mi sit amet mauris commodo quis imperdiet massa tincidunt"
-        " nunc pulvinar sapien et ligula ullamcorper malesuada proin libero "
-        "nunc consequat interdum varius sit amet mattis vulputate enim nulla "
-        "aliquet", userNamePost: "Yohan Sampaio", datePost: DateTime.now()),
-    PostModel(txtPost: "arcu odio ut sem nulla pharetra diam sit amet nisl "
-        "suscipit adipiscing bibendum est ultricies integer quis auctor elit "
-        "sed vulputate mi sit amet mauris commodo quis imperdiet massa tincidunt"
-        " nunc pulvinar sapien et ligula ullamcorper malesuada proin libero "
-        "nunc consequat interdum varius sit amet mattis vulputate enim nulla "
-        "aliquet", userNamePost: "Yohan Sampaio", datePost: DateTime.now()),
-    PostModel(txtPost: "arcu odio ut sem nulla pharetra diam sit amet nisl "
-        "suscipit adipiscing bibendum est ultricies integer quis auctor elit "
-        "sed vulputate mi sit amet mauris commodo quis imperdiet massa tincidunt"
-        " nunc pulvinar sapien et ligula ullamcorper malesuada proin libero "
-        "nunc consequat interdum varius sit amet mattis vulputate enim nulla "
-        "aliquet", userNamePost: "Yohan Sampaio", datePost: DateTime.now()),
-  ];
+  @computed
+  UserModel get userModel => baseContent.userModel;
+
 }

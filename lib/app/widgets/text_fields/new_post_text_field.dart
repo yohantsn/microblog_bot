@@ -1,50 +1,42 @@
 import 'package:flutter/material.dart';
 import 'package:micro_blog_bot/app/style/app_color_scheme.dart';
 
-class PrincipalTextField extends StatelessWidget {
+class NewPostTextField extends StatelessWidget {
   final TextEditingController controller;
   final Function onChanged;
   final String hint;
   final TextInputType textInputType;
-  final Icon icon;
-  final bool obscure;
-  final String errorTxt;
-  final bool readOnly;
+  final String textInfo;
+  final int maxText;
 
-  PrincipalTextField(
+  NewPostTextField(
       {this.controller,
-      this.hint,
-      this.onChanged,
-      this.textInputType,
-      this.icon,
-      this.obscure,
-      this.errorTxt,
-      this.readOnly});
+        this.hint,
+        this.onChanged,
+        this.textInputType,
+        this.textInfo,
+        this.maxText});
+
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         Container(
+          padding: EdgeInsets.all(10),
           alignment: Alignment.center,
-          width: MediaQuery.of(context).size.width * .85,
-          height: 60,
+          width: MediaQuery.of(context).size.width * .9,
+          height: 170,
           decoration: BoxDecoration(
             color: AppColorScheme.txtColorLight,
-            border: Border.all(
-              color: errorTxt != null && errorTxt.isNotEmpty ? Colors.red : Colors.transparent,
-              width: 1
-            ),
             borderRadius: BorderRadius.all(Radius.circular(20)),
           ),
           child:TextField(
-            textAlignVertical: TextAlignVertical.center,
+            textAlignVertical: TextAlignVertical.top,
             onChanged: onChanged,
-            readOnly: readOnly ?? false,
             controller: controller,
             decoration: InputDecoration(
               hintText: hint,
-              prefixIcon: icon,
               border: InputBorder.none,
               focusedBorder: InputBorder.none,
               enabledBorder: InputBorder.none,
@@ -52,13 +44,15 @@ class PrincipalTextField extends StatelessWidget {
               disabledBorder: InputBorder.none,
             ),
             keyboardType: textInputType,
-            obscureText: obscure ?? false,
+            maxLength: maxText,
+            maxLines: 10,
+            minLines: 1,
           ),
 
         ),
         Text(
-          errorTxt ?? "",
-          style: TextStyle(color: Colors.red, fontSize: 10, fontWeight: FontWeight.w800),
+          textInfo ?? "",
+          style: TextStyle(color: AppColorScheme.txtColorSecondary, fontSize: 14, fontWeight: FontWeight.w600),
           textAlign: TextAlign.start,
         )
       ],

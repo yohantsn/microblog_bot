@@ -1,5 +1,5 @@
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:micro_blog_bot/data/repositorie/storage_interface.dart';
+import 'package:micro_blog_bot/data/repositorie/external/storage_interface.dart';
 import 'package:micro_blog_bot/domain/models/user_model.dart';
 import 'package:micro_blog_bot/domain/usecases/base_content.dart';
 import 'package:mobx/mobx.dart';

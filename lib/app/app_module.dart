@@ -1,6 +1,4 @@
 
-import 'dart:convert';
-
 import 'package:flutter/widgets.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:micro_blog_bot/app/pages/home/home_module.dart';
@@ -9,9 +7,11 @@ import 'package:micro_blog_bot/app/pages/signup/signup_module.dart';
 import 'package:micro_blog_bot/app/pages/splash/splash_module.dart';
 import 'package:micro_blog_bot/data/auth/auth_firebase.dart';
 import 'package:micro_blog_bot/data/auth/auth_interface.dart';
-import 'package:micro_blog_bot/data/repositorie/storage_firebase.dart';
-import 'package:micro_blog_bot/data/repositorie/storage_interface.dart';
-import 'package:micro_blog_bot/domain/usecases/base_content.dart';
+import 'package:micro_blog_bot/data/repositorie/api/news_api.dart';
+import 'package:micro_blog_bot/data/repositorie/api/news_interface.dart';
+import 'package:micro_blog_bot/data/repositorie/external/storage_firebase.dart';
+import 'package:micro_blog_bot/data/repositorie/external/storage_interface.dart';
+
 
 import 'app_widget.dart';
 
@@ -21,6 +21,7 @@ class AppModule extends MainModule {
   final List<Bind> binds = [
     Bind<IAuth>((i) => AuthFirebase()),
     Bind<IStorage>((i) => StorageFirebase()),
+    Bind<INews>((i) => NewsApi())
   ];
 
   @override

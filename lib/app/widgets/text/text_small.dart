@@ -9,6 +9,7 @@ class TextSmall extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
+      textAlign: TextAlign.justify,
       style: TextStyle(
         fontSize: 14,
         fontWeight: FontWeight.w200,

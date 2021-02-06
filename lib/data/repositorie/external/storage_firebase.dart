@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:micro_blog_bot/data/repositorie/storage_interface.dart';
+import 'package:micro_blog_bot/data/repositorie/external/storage_interface.dart';
+import 'package:micro_blog_bot/domain/models/post_model.dart';
 import 'package:micro_blog_bot/domain/models/user_model.dart';
 
 class StorageFirebase implements IStorage{
@@ -31,6 +32,26 @@ class StorageFirebase implements IStorage{
     QueryDocumentSnapshot queryDocumentSnapshot = querySnapshot.docs.first;
     UserModel userModel = UserModel.fromJson( queryDocumentSnapshot.data());
     return userModel;
+  }
+
+  @override
+  Stream readPosts(){
+    Stream collectionStream = FirebaseFirestore.instance.collection('post_data')
+        .orderBy("datePost", descending: true).snapshots();
+    return collectionStream;
+  }
+
+  @override
+  Future<void> publishPost({String uid, PostModel postModel}) async{
+    await this
+        .fire
+        .collection("post_data")
+        .add(postModel.toJson());
+  }
+
+  @override
+  Future<void> deleteDocument({DocumentSnapshot documentSnapshot}) async{
+    await this.fire.collection("post_data").doc(documentSnapshot.id).delete();
   }
 
 }

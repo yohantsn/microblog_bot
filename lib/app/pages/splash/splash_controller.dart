@@ -1,6 +1,6 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:micro_blog_bot/data/auth/auth_interface.dart';
-import 'package:micro_blog_bot/data/repositorie/storage_interface.dart';
+import 'package:micro_blog_bot/data/repositorie/external/storage_interface.dart';
 import 'package:mobx/mobx.dart';
 
 part 'splash_controller.g.dart';
@@ -9,8 +9,8 @@ class SplashController = _SplashController
     with _$SplashController;
 
 abstract class _SplashController with Store{
-  IAuth auth = Modular.get();
-  IStorage storage = Modular.get();
+  final IAuth auth = Modular.get();
+  final IStorage storage = Modular.get();
 
   _SplashController(){
     final uid = auth.getUid();
