@@ -19,7 +19,8 @@ class _FeedPageState extends ModularState<FeedPage, FeedController> {
   Widget build(BuildContext context) {
     return DefaultScreen(
         showAppBar: true,
-        title: "Feed",
+        showLogout: false,
+        title: "Posts da Galera",
         floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
         floatingActionButton: FloatingActionButton(
           backgroundColor: Color(0xFFF5821F),

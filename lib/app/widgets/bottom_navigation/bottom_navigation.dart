@@ -13,25 +13,16 @@ Widget bottomBarWidget({int selectedIndex, Function onItemTapped}) {
       fixedColor: Color(0xFFF5821F),
       items: <BottomNavigationBarItem>[
         BottomNavigationBarItem(
-          icon: Icon(
-            Icons.new_releases_sharp,
-            color: Colors.white,
-          ),
+          icon: Image.asset("images/newsletter.png", height: 20, width: 20,),
           title: Text('Novidades', style: TextStyle(color: Colors.white),),
         ),
         BottomNavigationBarItem(
-          icon: Icon(
-            Icons.home,
-            color: Colors.white,
-          ),
-          title: Text('Feed', style: TextStyle(color: Colors.white),),
+          icon: Image.asset("images/hashtag_icon.png", height: 20, width: 20,),
+          title: Text('Posts da Galera', style: TextStyle(color: Colors.white),),
         ),
         BottomNavigationBarItem(
-          icon: Icon(
-            Icons.person,
-            color: Colors.white,
-          ),
-          title: Text('Perfil', style: TextStyle(color: Colors.white),),
+          icon: Image.asset("images/user_icon.png", height: 20, width: 20,),
+          title: Text('Meus Posts', style: TextStyle(color: Colors.white),),
         ),
       ],
       backgroundColorStart: AppColorScheme.ColorPrincipal,

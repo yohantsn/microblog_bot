@@ -5,18 +5,20 @@ import 'package:micro_blog_bot/domain/models/new_model.dart';
 
 
 class NewsMock implements INews{
-  final String json;
+  final String jsons;
 
-  NewsMock({this.json});
+  NewsMock({this.jsons});
 
   @override
-  Future<List<NewModel>> getNews() {
+  Future<List<NewModel>> getNews() async {
     final listNews = <NewModel>[];
-    if(json != null){
-      for(final item in jsonDecode(json)){
+    final map = await jsonDecode(jsons);
+    if(map != null){
+      for(final item in map["news"]){
         final newModel = NewModel.fromJson(item);
         listNews.add(newModel);
       }
     }
+    return Future.value(listNews);
   }
 }

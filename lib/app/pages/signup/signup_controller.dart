@@ -98,18 +98,20 @@ abstract class _SignUpController with Store{
     isLoading = true;
     final result = await auth.authCreateAccountEmail(email: email,
         password: password);
-    if(result.containsKey("error")){
+    if(result.containsKey("errorPassMsg") || result.containsKey("errorMsg")){
       if(result.containsKey("pass")) {
         errorPass = result["errorPassMsg"];
       }else{
-        errorPass = result["errorMsg"];
+        errorEmail = result["errorMsg"];
       }
       isLoading = false;
       return;
+    }else {
+      final userModel = UserModel(
+          nameUser: name, emailUser: email, uidUser: result["uid"]);
+      await storage.saveUser(userModel: userModel);
+      isLoading = false;
+      Modular.to.pushReplacementNamed("/welcome/", arguments: userModel);
     }
-    final userModel = UserModel(nameUser: name, emailUser: email, uidUser: result["uid"]);
-    await storage.saveUser(userModel: userModel);
-    isLoading = false;
-    Modular.to.pushReplacementNamed("/home/", arguments: userModel);
   }
 }

@@ -47,6 +47,21 @@ mixin _$ProfileController on _ProfileController, Store {
     });
   }
 
+  final _$countPostsAtom = Atom(name: '_ProfileController.countPosts');
+
+  @override
+  int get countPosts {
+    _$countPostsAtom.reportRead();
+    return super.countPosts;
+  }
+
+  @override
+  set countPosts(int value) {
+    _$countPostsAtom.reportWrite(value, super.countPosts, () {
+      super.countPosts = value;
+    });
+  }
+
   final _$_ProfileControllerActionController =
       ActionController(name: '_ProfileController');
 
@@ -62,10 +77,22 @@ mixin _$ProfileController on _ProfileController, Store {
   }
 
   @override
+  void deletePost(DocumentSnapshot documentSnapshot) {
+    final _$actionInfo = _$_ProfileControllerActionController.startAction(
+        name: '_ProfileController.deletePost');
+    try {
+      return super.deletePost(documentSnapshot);
+    } finally {
+      _$_ProfileControllerActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 snapshotPosts: ${snapshotPosts},
 isLoading: ${isLoading},
+countPosts: ${countPosts},
 userModel: ${userModel}
     ''';
   }

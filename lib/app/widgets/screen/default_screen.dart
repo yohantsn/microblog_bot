@@ -8,6 +8,8 @@ class DefaultScreen extends StatelessWidget {
   final FloatingActionButtonLocation floatingActionButtonLocation;
   final Widget body;
   final bool showAppBar;
+  final bool showLogout;
+  final Function onLogout;
 
   DefaultScreen(
       {this.title,
@@ -15,7 +17,10 @@ class DefaultScreen extends StatelessWidget {
       this.floatingActionButton,
       this.floatingActionButtonLocation,
       this.body,
-      @required this.showAppBar});
+      @required this.showAppBar,
+      @required this.showLogout,
+      this.onLogout
+      });
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +32,8 @@ class DefaultScreen extends StatelessWidget {
           children: [
             showAppBar ? GradientBar(
               title: title,
+              showButtonLogout: showLogout,
+              onLogout: onLogout,
             ): Container(),
             body
           ],

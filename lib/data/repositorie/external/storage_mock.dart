@@ -1,18 +1,23 @@
+import 'dart:convert';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:micro_blog_bot/data/repositorie/external/storage_interface.dart';
 import 'package:micro_blog_bot/domain/models/user_model.dart';
 
 class StorageMock implements IStorage{
+  final String json;
+
+  StorageMock({this.json});
+
   @override
-  Future<void> saveUser({UserModel userModel}) {
-    // TODO: implement saveUser
-    throw UnimplementedError();
+  Future<void> saveUser({UserModel userModel}) async{
+    await Future.delayed(Duration(seconds: 2));
   }
 
   @override
   Future<UserModel> getUserModel({String uid}) {
-    // TODO: implement getUserModel
-    throw UnimplementedError();
+    final userModel = UserModel.fromJson(jsonDecode(json)["user"]);
+    return Future.value(userModel);
   }
 
   @override
@@ -22,15 +27,13 @@ class StorageMock implements IStorage{
   }
 
   @override
-  Future<void> publishPost({String uid, postModel}) {
-    // TODO: implement publishPost
-    throw UnimplementedError();
+  Future<void> publishPost({String uid, postModel}) async {
+   await Future.delayed(Duration(seconds: 2));
   }
 
   @override
-  Future<void> deleteDocument({DocumentSnapshot documentSnapshot}) {
-    // TODO: implement deleteDocument
-    throw UnimplementedError();
+  Future<void> deleteDocument({DocumentSnapshot documentSnapshot}) async{
+    await Future.delayed(Duration(seconds: 2));
   }
 
 

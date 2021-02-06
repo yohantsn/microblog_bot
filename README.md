@@ -1,8 +1,15 @@
 # micro_blog_bot
 
-A new Flutter application.
+The Micro Blog Bot is an app for the share a bit of the everything, how for example: what you think, whats your news and etc...
 
 ## Getting Started
+
+Before you run the project.
+ -> Open the terminal;
+ -> run: flutter channel dev;
+ -> run: flutter upgrade;
+
+This change is necessary, beacuse the version 3.0.0-nullsafety.40 of the flutter modular requires the version that is still in beta
 
 This project is a starting point for a Flutter application.
 

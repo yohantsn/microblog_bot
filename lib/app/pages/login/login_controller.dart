@@ -57,14 +57,17 @@ abstract class _LoginController with Store {
     isLoading = true;
     final result =
         await auth.authSignAccountEmail(email: email, password: password);
-    if (result.containsKey("error")) {
+    if (result.containsKey("errorMsg")) {
       errorPass = result["errorMsg"];
+      errorEmail = result["errorMsg"];
       isLoading = false;
       return;
+    }else{
+
+      final userModel = await storage.getUserModel(uid: result["uid"]);
+      isLoading = false;
+      Modular.to.pushReplacementNamed("/home/", arguments: userModel);
     }
 
-    final userModel = await storage.getUserModel(uid: result["uid"]);
-    isLoading = false;
-    Modular.to.pushReplacementNamed("/home/", arguments: userModel);
   }
 }

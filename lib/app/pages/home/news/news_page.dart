@@ -18,7 +18,8 @@ class _NewsPageState extends ModularState<NewsPage, NewsController> {
   Widget build(BuildContext context) {
     return DefaultScreen(
       showAppBar: true,
-      title: "News",
+      showLogout: false,
+      title: "Novidades Boticário",
       body: Expanded(child: Observer(
         builder: (_) {
       return store.isLoading ? Shimmer(
