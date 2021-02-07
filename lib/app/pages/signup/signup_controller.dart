@@ -110,8 +110,9 @@ abstract class _SignUpController with Store{
       final userModel = UserModel(
           nameUser: name, emailUser: email, uidUser: result["uid"]);
       await storage.saveUser(userModel: userModel);
-      isLoading = false;
+      Modular.to.popUntil((value) => value.isFirst);
       Modular.to.pushReplacementNamed("/welcome/", arguments: userModel);
+      isLoading = false;
     }
   }
 }
