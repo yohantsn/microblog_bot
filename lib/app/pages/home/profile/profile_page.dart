@@ -29,7 +29,8 @@ class _ProfilePageState extends ModularState<ProfilePage, ProfileController> {
       onLogout: ()async{
         await store.logout();
         Modular.to.popUntil((value) => value.isFirst);
-        Modular.to.pushReplacementNamed("/login");
+        Modular.to.pop();
+        Modular.to.pushNamed("/login");
         },
       body: Expanded(child: Observer(
         builder: (_) {

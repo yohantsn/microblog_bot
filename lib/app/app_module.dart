@@ -1,6 +1,7 @@
 
 import 'package:flutter/widgets.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:micro_blog_bot/app/pages/error/error_module.dart';
 import 'package:micro_blog_bot/app/pages/home/home_module.dart';
 import 'package:micro_blog_bot/app/pages/login/login_module.dart';
 import 'package:micro_blog_bot/app/pages/signup/signup_module.dart';
@@ -13,6 +14,8 @@ import 'package:micro_blog_bot/data/repositorie/api/news_api.dart';
 import 'package:micro_blog_bot/data/repositorie/api/news_interface.dart';
 import 'package:micro_blog_bot/data/repositorie/external/storage_firebase.dart';
 import 'package:micro_blog_bot/data/repositorie/external/storage_interface.dart';
+import 'package:micro_blog_bot/domain/usecases/tools/verify_internet.dart';
+import 'package:micro_blog_bot/domain/usecases/tools/verify_internet_interface.dart';
 
 
 import 'app_widget.dart';
@@ -23,7 +26,8 @@ class AppModule extends MainModule {
   final List<Bind> binds = [
     Bind<IAuth>((i) => AuthFirebase()),
     Bind<IStorage>((i) => StorageFirebase()),
-    Bind<INews>((i) => NewsApi())
+    Bind<INews>((i) => NewsApi()),
+    Bind<IVerifyInternet>((i) => VerifyInternet())
   ];
 
   @override
@@ -33,6 +37,7 @@ class AppModule extends MainModule {
     ModuleRoute("/login", module: LoginModule()),
     ModuleRoute("/signUp", module: SignUpModule()),
     ModuleRoute("/welcome", module: WelcomeModule()),
+    ModuleRoute("/error", module: ErrorModule()),
   ];
 
   @override

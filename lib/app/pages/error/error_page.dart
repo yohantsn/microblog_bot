@@ -9,14 +9,12 @@ import 'package:micro_blog_bot/app/widgets/text/text_small.dart';
 import 'package:micro_blog_bot/app/widgets/text_fields/new_post_text_field.dart';
 import 'package:micro_blog_bot/domain/models/user_model.dart';
 
-class WelcomePage extends StatefulWidget {
-  final UserModel userModel;
-  WelcomePage(this.userModel);
+class ErrorPage extends StatefulWidget {
   @override
-  _WelcomePageState createState() => _WelcomePageState();
+  _ErrorPageState createState() => _ErrorPageState();
 }
 
-class _WelcomePageState extends State<WelcomePage> {
+class _ErrorPageState extends State<ErrorPage> {
   final controllerPost = TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -33,13 +31,13 @@ class _WelcomePageState extends State<WelcomePage> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Padding(
-                          padding: EdgeInsets.fromLTRB(20, 10, 20, 20),
-                          child: TextBig(text: "Seja bem vindo!"),
+                          padding: EdgeInsets.fromLTRB(20, 40, 20, 20),
+                          child: TextBig(text: "Houston, temos um problema!"),
                         ),
                         Container(
-                          padding: EdgeInsets.fromLTRB(10, 20, 10, 10),
+                          padding: EdgeInsets.fromLTRB(10, 40, 10, 10),
                           child: Image.asset(
-                            "images/news.jpg",
+                            "images/error.jpg",
                             height: MediaQuery.of(context).size.height * .3,
                             width: MediaQuery.of(context).size.width * 0.9,
                           ),
@@ -48,33 +46,16 @@ class _WelcomePageState extends State<WelcomePage> {
                           child: Padding(
                             padding: EdgeInsets.all(20),
                             child: TextMedium(
-                                text: "Aqui você pode compartilhar suas ideias com a galera, "
-                                    "e ainda conhecer todas as novidades da boticário. "
-                                    "Tudo em um só app!!"
+                                text: "Não foi possível acessar nossos "
+                                    "servidores, por favor, verifique sua "
+                                    "conexão e tente novamente"
                             ),
                           )
-                        ),
-                        Container(
-                          padding: EdgeInsets.fromLTRB(10, 10, 10, 40),
-                          child: Image.asset(
-                            "images/logo_bot.png",
-                            height: MediaQuery.of(context).size.height * .05,
-                            width: MediaQuery.of(context).size.width * 0.5,
-                          ),
                         ),
                       ],
                     ),
                   ),
-              Padding(
-                padding: EdgeInsets.all(20),
-                child: ButtonPrincipal(
-                    text: "Vamos lá",
-                    onPressed: () {
-                      Modular.to.pop();
-                      Modular.to.pushNamed(
-                          "/home/", arguments: widget.userModel);
-                    }),
-              ),
+
             ])
     ));
   }
