@@ -69,7 +69,11 @@ class _WelcomePageState extends State<WelcomePage> {
                 padding: EdgeInsets.all(20),
                 child: ButtonPrincipal(
                     text: "Vamos lá",
-                    onPressed: ()=> Modular.to.popAndPushNamed("/home/", arguments: widget.userModel)),
+                    onPressed: () {
+                      Modular.to.popUntil((value) => value.isFirst);
+                      Modular.to.popAndPushNamed(
+                          "/home/", arguments: widget.userModel);
+                    }),
               ),
             ])
     ));
