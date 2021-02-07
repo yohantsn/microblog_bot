@@ -63,10 +63,10 @@ abstract class _LoginController with Store {
       isLoading = false;
       return;
     }else{
-
       final userModel = await storage.getUserModel(uid: result["uid"]);
-      isLoading = false;
+      Modular.to.popUntil((value) => value.isFirst);
       Modular.to.pushReplacementNamed("/home/", arguments: userModel);
+      isLoading = false;
     }
 
   }
